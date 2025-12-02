@@ -38,6 +38,7 @@ int main(void){
 			num = num%100;
 			temp1=dial;
 			dial=(dial+num)%100;
+			//edge case where 0->0; we subtract one value
 			if(dial==temp1){
 				psswd2--;
 			}
