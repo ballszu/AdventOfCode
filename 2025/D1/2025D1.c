@@ -38,19 +38,12 @@ int main(void){
 			num = num%100;
 			temp1=dial;
 			dial=(dial+num)%100;
-			//edge case where 0->0; we subtract one value
-			if(dial==temp1 && temp1==0){
-				psswd2--;
-			}
 		}
 		else{
 			psswd2=((dial-(num+99))/-100)+psswd2;
 			num = num%100;
 			temp2=dial;
 			dial=(dial-num+100)%100;
-			if(dial==temp2 && temp1==0){
-				psswd2--;
-			}
 		}
 		//Checking for Zero
 		if(dial==0)
