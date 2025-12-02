@@ -14,6 +14,9 @@ int main(void){
 	//Reading the file
 	int dial = 50;
 	int psswd=0;
+	int psswd2=0;
+	int temp1=0;
+	int temp2=0;
 	char buffer[255];
 	while(fgets(buffer, 255, input)!=NULL)
 	{
@@ -29,17 +32,24 @@ int main(void){
 		}
 		//Getting the number
 		int num = atoi(buffer + 1);
-		//Now we have the Num, Dir, Dial
-		//lets calculate dial
-		num = num%100;
-		printf("num is %d ",num);
-		printf("|| and dir is %d\n",dir);
-		//for +ve
+		//Calculations
 		if(dir==1){
-			dial=(dial+num)%100;	
+			psswd2=((num+dial)/100)+psswd2;
+			num = num%100;
+			temp1=dial;
+			dial=(dial+num)%100;
+			if(dial==temp1){
+				psswd2--;
+			}
 		}
 		else{
+			psswd2=((num-(num+99))/-100)+psswd2;
+			num = num%100;
+			temp2=dial;
 			dial=(dial-num+100)%100;
+			if(dial==temp2){
+				psswd2--;
+			}
 		}
 		//Checking for Zero
 		if(dial==0)
@@ -47,7 +57,8 @@ int main(void){
 			psswd++;
 		}
 	}
-	printf("Zero is %d\n",psswd);
+	printf("Answer for 1st Puzzle is: %d\n",psswd);
+	printf("Answer for 2nd Puzzle is: %d\n",psswd2+psswd);
 	//closing the file
 	fclose(input);
 }
