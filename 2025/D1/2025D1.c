@@ -44,7 +44,7 @@ int main(void){
 			}
 		}
 		else{
-			psswd2=((num-(num+99))/-100)+psswd2;
+			psswd2=((dial-(num+99))/-100)+psswd2;
 			num = num%100;
 			temp2=dial;
 			dial=(dial-num+100)%100;
