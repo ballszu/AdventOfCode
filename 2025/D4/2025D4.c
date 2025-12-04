@@ -63,6 +63,51 @@ int main(void){
 	//
 	//
 	//
+	//Part 2 Of the puzzle
+	count=0;
+	int ans2=0;
+	//making a copy of the input array
+    char input_arr_cp[nLines][chars/nLines];
+	for(int i=0;i<nLines;i++){
+		for(int j=0;j<charsl;j++){
+			input_arr_cp[i][j]=input_arr[i][j];
+		}
+	}
+	//puzzle logic
+	while(true){
+	for(int i=0;i<nLines;i++){
+		for(int j=0;j<charsl;j++){
+			if(input_arr[i][j]=='@'){
+				//check for boundary
+				for(int x=i-1;x<=i+1;x++){
+					for(int y=j-1;y<=j+1;y++){
+						if(x>=0 && y>=0 && x<charsl && y<nLines && input_arr[x][y]=='@'){
+							count++;
+						}
+					}
+				}
+				//if less than 4 rolls
+				//add to count else not
+				if(count<5){
+					ans2++;
+					//updating the future array
+					input_arr_cp[i][j]='x';
+				}
+				count=0; //reset count to zero
+			}
+		}
+	}
+	//updating the old array to new array
+	for(int p=0;p<nLines;p++){
+		for(int q=0;q<charsl;q++){
+			input_arr[p][q]=input_arr_cp[p][q];
+		}
+	}	
+	printf("Answer 2:%d\n",ans2);
+	}
+	//
+	//
+	//
     //closing the file
     fclose(input);
 }
