@@ -56,6 +56,8 @@ int main(void){
 			else if(input_arr[i][j]=='|'){
 				input_arr[i+1][j]='|';
 			}
+			//checking for break
+			if(input_arr[i+1][j]==0) break;
 			printf("%c",input_arr[i][j]);
 		}
 		printf("         count is: %d",count);
